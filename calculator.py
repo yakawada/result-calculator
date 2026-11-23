@@ -8,6 +8,20 @@ def grade(score):
     if score >= 40: return "E"
     return "F"
 
+class Student:
+    def __init__(self, name, scores):
+        self.name = name
+        self.scores = scores  # e.g. {"maths": 78, "english": 65}
+
+    def total(self):
+        return sum(self.scores.values())
+
+    def average(self):
+        return round(self.total() / len(self.scores), 1)
+
+    def grade(self):
+        return grade(self.average())
+
 def load_scores(path):
     with open(path, newline="") as f:
         return list(csv.DictReader(f))
